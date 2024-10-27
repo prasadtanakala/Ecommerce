@@ -1,0 +1,47 @@
+<div class="container">
+    <div class="card w-50 mt-5 design">
+      <form [formGroup]="loginform">
+        <h3>Login Page</h3>
+          <div>
+            <label>Email</label>
+            <input type="email" class="form-control " formControlName="email"/>
+            <div class="text-danger" *ngIf="loginform.get('email').touched && loginform.get('email').invalid || submited && loginform.get('email').invalid" >
+                <div *ngIf="loginform.get('email').errors.required">
+                        please enter email
+                </div>
+                <div *ngIf="loginform.get('email').errors.pattern">
+                      invalid email addresss
+                </div>
+            </div>
+            <div *ngIf="wrongEmail" class="text-danger">
+                        wrong email address
+            </div>
+            
+          </div>
+          <div>
+            <label>Password</label>
+            <input type="password" class="form-control " formControlName="password" />
+            <div class="text-danger" *ngIf="loginform.get('password').touched && loginform.get('password').invalid || submited && loginform.get('password').invalid" >
+                <div *ngIf="loginform.get('password').errors.required">
+                        please enter password
+                </div>
+                <div *ngIf="loginform.get('password').errors.minlength">
+                     password must be 6 charcters 
+                </div>
+            </div>
+            <div *ngIf="wrongPassword" class="text-danger">
+                      wrong password
+            </div>
+            
+          </div>
+          <button (click)="loginformfunctonality()" class="btn btn-primary mt-5">
+            Login
+          </button>
+<div>
+    <span class="text-info" >If Have a Don't Account Please register</span>
+    <a [routerLink]="['/register']" routerLinkActive="router-link-active" >Register </a>
+</div>
+      </form>
+    </div>
+</div>
+

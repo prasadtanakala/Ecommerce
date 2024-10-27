@@ -1,0 +1,53 @@
+    <div class="header">
+        <div class="headerContent">
+            <div>
+                <h4>Ecommerce  Website</h4>
+               </div>
+               <div>
+                <input type="search"  class="form-control " placeholder="Search any Product" [(ngModel)]="searchText" (keyup)="filterData()"/>
+               </div>
+               <div class="font-icons">
+                <i class="bi bi-cart" [routerLink]="['/detailpage']" routerLinkActive="router-link-active" ><span >{{data1.length}}</span></i> 
+               </div>
+               <div>
+                <div *ngFor="let item of Data">
+                     <p>User:-{{item.name}}</p>
+                </div>
+                 <div style="display: flex;">
+                    <div>
+                        <p [routerLink]="['/register']" routerLinkActive="router-link-active" class="text-success" >Register Page</p>
+
+                    </div>
+                    <div>
+                        <p [routerLink]="['/login']" routerLinkActive="router-link-active" class="text-primary" >Login</p>
+                    </div>
+                  
+                 </div>
+               </div>
+        </div>
+        </div>
+
+<section>
+    <p  *ngIf="newOne;" class="text-danger" style="text-align: center;">Products not found</p>
+    <button (click)="GetAllProducts()" class="btn btn-primary">All Products</button>
+     <button (click)="sorting('asc')" class="btn btn-danger">Heighest Price </button>
+     <button (click)="pricesort('dsc')" class="btn btn-primary">Lowest Price</button>
+     <button (click)="fitlterItem('electronics')" class="btn btn-secondary">Electronics</button>
+     <button (click)="WomenShoping()" class="btn btn-info">Womens Clothing</button>
+     <button (click)="MensShopping()" class="btn btn-success">Mens Clothing</button>
+    <div class="container mt-5">
+        <div class="row">
+            <ng-container *ngFor="let item of  mockData; let i = index" >
+                <div class="card col-md-3">
+                    <img src="{{item.image}}" alt="">
+                    <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"><i>Title:-</i>{{item.title}}</h5>
+                    <p style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;"><strong>Description:-</strong>{{item.description}}</p>
+                    <p><strong>Price:</strong>${{item.price}}</p>
+                    <button (click)="incranddec(item.id,i)" class="btn btn-success">+</button><span>{{item.numberofitems}}</span><button class="btn btn-danger" (click)="decrement(item.id,i)">-</button> 
+                    <button class="btn btn-secondary" (click)="viewpage(item)">view details</button>
+                    <button class="btn btn-primary" (click)="addtocart(item)">add to cart</button>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+</section>

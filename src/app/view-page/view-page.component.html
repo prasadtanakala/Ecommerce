@@ -1,0 +1,16 @@
+<!-- <app-homepage (ProductDtls)="Product($event)"></app-homepage> -->
+<div class="container mt-5">
+    <ng-container *ngFor="let item of  productdetails" >
+        <div class="card col-md-3">
+            <img src="{{item.image}}" alt="">
+            <h5 style="white-space: nowrap;overflow: hidden;text-overflow: ellipsis;max-width: 100ch;">{{item.title}}</h5>
+            <p style="white-space: nowrap;overflow: hidden;">{{item.description}}</p>
+            <p><strong>Price:</strong>${{item.price}}</p>
+            <p><strong>Rate:</strong> {{item.rating.rate}}</p>
+            <p><strong>Count:</strong> {{item.rating.count}}</p>
+            <button class="btn btn-primary">Product Details</button>
+            <a [routerLink]="['/homepage']" routerLinkActive="router-link-active" >Go Back Home Page</a>
+
+        </div>
+    </ng-container>
+</div>

@@ -1,0 +1,89 @@
+<div class="container">
+   <div class="card w-50 mt-5 design">
+       <form [formGroup]="regForm">
+        <h3>Register Page</h3>
+        <div >
+            <label>Name</label>
+            <input type="text" class="form-control " formControlName="name" placeholder="enter name"/>
+            <div class="text-danger" *ngIf="regForm.get('name').touched && regForm.get('name').invalid || submited && regForm.get('name').invalid">
+                  <div *ngIf="regForm.get('name').errors.required">
+                          please enter name
+                  </div>
+                  <div *ngIf="regForm.get('name').errors.pattern">
+                          only enter charcters
+                  </div>
+            </div>
+        </div>
+        <div >
+            <label>email</label>
+            <input type="email" class="form-control " formControlName="email" placeholder="enter email"/>
+            <div class="text-danger" *ngIf="regForm.get('email').touched && regForm.get('email').invalid || submited && regForm.get('email').invalid">
+                  <div *ngIf="regForm.get('email').errors.required">
+                          please enter email
+                  </div>
+                  <div *ngIf="regForm.get('email').errors.pattern">
+                       invalid email address
+                  </div>
+            </div>
+        </div>
+        <div >
+            <label>phone</label>
+            <input type="text" class="form-control " formControlName="phone" maxlength="10" placeholder="enter phone number"/>
+            <div class="text-danger" *ngIf="regForm.get('phone').touched && regForm.get('phone').invalid || submited && regForm.get('phone').invalid">
+                  <div *ngIf="regForm.get('phone').errors.required">
+                      please enter phone number
+                  </div>
+                  <div *ngIf="regForm.get('phone').errors.pattern">
+                       only enter numbers
+                  </div>
+                  <div *ngIf="regForm.get('phone').errors.minlength">
+                          enter only 10 digits numbers
+                  </div>
+            </div>
+        </div>
+        <div >
+            <div>
+                <label>Gender : </label>
+                <input type="radio" name="gender" value="male" formControlName="gender"/>Male
+                <input type="radio" name="gender" value="female" formControlName="gender"/>Female
+                <div class="text-danger" *ngIf="regForm.get('gender').touched && regForm.get('gender').invalid || submited && regForm.get('gender').invalid">
+                        <div *ngIf="regForm.get('gender').errors.required">
+                              please select gender
+                        </div>
+                </div>
+                </div>
+        </div>
+        <div >
+            <label>password</label>
+            <input type="password" class="form-control " formControlName="password" placeholder="enter password"/>
+            <div class="text-danger" *ngIf="regForm.get('password').touched && regForm.get('password').invalid || submited && regForm.get('password').invalid">
+                  <div *ngIf="regForm.get('password').errors.required">
+                please enter password
+                  </div>
+                  <div *ngIf="regForm.get('password').errors.minlength">
+                         min length 6 charcters
+                  </div>
+            </div>
+        </div>
+        <div>
+            <label> confirm  password </label>
+            <input type="password" formControlName="cnpassword" placeholder="Re-enter  password"   class="form-control"/>
+            <div class="text-danger" *ngIf="regForm.get('cnpassword').touched && regForm.get('cnpassword').invalid || submited && regForm.get('cnpassword').invalid ">
+                  <div *ngIf="regForm.get('cnpassword').errors.required">
+                           please enter confirm password
+                  </div> 
+            </div>
+            <div class="text-danger" *ngIf="submited && regForm.value.password !== regForm.value.cnpassword">
+                  password does not matched
+            </div>
+          </div>
+        <div>
+            <button class="btn btn-danger mt-5 " (click)="registerValidation()">Register</button>
+        </div>
+        <div>
+            <span class="text-info" >If Have already account please login</span>
+            <a [routerLink]="['/login']" routerLinkActive="router-link-active" >Login </a>
+        </div>
+       </form>
+   </div>
+</div>

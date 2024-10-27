@@ -1,0 +1,28 @@
+.header{
+    background-color: skyblue;
+    width: 100%;
+    padding: 10px;
+}
+.card{
+margin: 10px;
+}
+.font-icons{
+    font-size: 20px;
+}
+.headerContent{
+    display: flex;
+    justify-content: space-around;
+}
+img{
+    width: 100%;
+    height: 100%;
+    
+}
+.container img{
+    width: 100px;
+    height: 100px;
+    
+}
+.incranddec button{
+  width: 20px;
+}
